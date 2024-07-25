@@ -13,17 +13,29 @@ const app = express();
 
 
 const User = require("./Models/UserModel");
+const Owner = require("./Models/OwnerModel")
 
 const userRegisterRoute = require("./Routers/UserRoutes/RegesterRoute");
 const userLoginRoute = require("./Routers/UserRoutes/LoginRoute");
+const getAllUserRoute = require('./Routers/UserRoutes/GetAllUsers')
 
+const createOwnerRoute = require("./Routers/OwnerRouters/CreateOwnerRoute")
+const getAllOwnerRoute = require("./Routers/OwnerRouters/GetAllOwnersRoute")
 
 app.use(express.json());
 app.use(cors());
 
-app.use("", userRegisterRoute);
 
-app.use("", userLoginRoute);
+
+
+
+
+app.use("/user", userRegisterRoute);
+app.use("/user", userLoginRoute);
+app.use("/user", getAllUserRoute)
+
+app.use("/owner", createOwnerRoute)
+app.use("/owner", getAllOwnerRoute)
 
 
 connectDB().then(() => {
