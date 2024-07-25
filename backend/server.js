@@ -11,13 +11,11 @@ const connectDB = require("./DB/Connection");
 
 const app = express();
 
-const port = process.env.PORT || 5000;
 
 const User = require("./Models/UserModel");
 
 const userRegisterRoute = require("./Routers/UserRoutes/RegesterRoute");
 const userLoginRoute = require("./Routers/UserRoutes/LoginRoute");
-const userLogoutRoute = require("./Routers/UserRoutes/LogoutRoute");
 
 
 app.use(express.json());
@@ -27,9 +25,12 @@ app.use("", userRegisterRoute);
 
 app.use("", userLoginRoute);
 
-app.use("", userLogoutRoute);
 
-connectDB();
-app.listen(port, () => {
-  console.log(`\nServer is running on port: ${port}`);
-});
+connectDB().then(() => {
+  //? Starting the server after successful database connection
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`);
+  });
+}
+)
+

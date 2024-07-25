@@ -24,6 +24,7 @@ const {
 //? Importing Register Verification Functions
 const {
   validateFields,
+  validatePhoneNumber,
   validateEmail,
   checkDuplicateEmail,
 } = require("../../Controllers/UserControllers/RegesteController");
@@ -32,6 +33,7 @@ const {
 router.post("/register", async (req, res) => {
   try {
     await validateFields(req);
+    await validatePhoneNumber(req);
     await validateEmail(req);
     await checkDuplicateEmail(req);
 
@@ -40,6 +42,7 @@ router.post("/register", async (req, res) => {
       userName: req.body.userName,
       userEmail: req.body.userEmail,
       userPassword: req.body.userPassword,
+      userPhone: req.body.userPhone
     });
 
     //? Saving the new user to the database

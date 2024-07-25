@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/HackathonProjectDB");
-    console.log('MongoDB connected successfully..!');
+    await mongoose.connect(`${process.env.MONGODB_URI}`).then(() => {
+
+      console.log('\nMongoDB connected successfully..!');
+    })
   } catch (err) {
     console.error('MongoDB connection error:', err.message);
   }

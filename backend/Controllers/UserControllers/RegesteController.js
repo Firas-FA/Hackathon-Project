@@ -8,14 +8,23 @@ const {
   REQUIRED_FIELD_ERROR,
   INVALID_EMAIL,
   DUPLICATE_EMAIL,
+  INVALID_PHONE_NUMBER
 } = require("../../Constants/User/RegisterMessages");
 //* Importing Constants Messages *\\
 
 //? Create Functions To Validation 
 async function validateFields(req) {
-  const { userName, userEmail, userPassword } = req.body;
-  if (!userName || !userEmail || !userPassword) {
+  const { userName, userEmail, userPassword, userPhone } = req.body;
+  if (!userName || !userEmail || !userPassword || !userPhone) {
     throw new Error(REQUIRED_FIELD_ERROR);
+  }
+}
+async function validatePhoneNumber(req) {
+  const { userPhone } = req.body;
+  const syrianPhoneNumberRegex = /^09\d{8}$/;
+
+  if (!syrianPhoneNumberRegex.test(userPhone)) {
+    throw new Error(INVALID_PHONE_NUMBER);
   }
 }
 
@@ -38,5 +47,6 @@ async function checkDuplicateEmail(req) {
 module.exports = {
   validateFields,
   validateEmail,
+  validatePhoneNumber,
   checkDuplicateEmail,
 };

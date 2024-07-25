@@ -23,6 +23,14 @@ const userSchema = new Schema({
     minlength: [6, "Password must be at least 6 characters long."],
     maxlength: [100, "Password cannot exceed 100 characters."],
   },
+  userPhone: {
+    type: String,
+    unique: true,
+    sparse: true,
+    maxlength: [10, "Phone number cannot exceed 10 digits."],
+    match: [/^09\d{8}$/, "Invalid Syrian phone number format. Phone number must start with 09 and be 10 digits long."],
+  },
+
   role: {
     type: String,
     enum: {
