@@ -46,15 +46,30 @@ function Houses({}) {
         getHeight();
     }, [])
 const url="./backend/public/image/apartment/"
+    // const housesListComponent = houses.map((house) => (
+        
+    //     <HouseCard  appartmentLocation={house.appartmentLocation}
+    //     img={house.img}
+    //     urlimg={url}
+    //     appartmentarea={house.appartmentarea}
+    //     countRoom={house.countRoom}
+    //     FloorHight={house.FloorHight}
+    //     blockNumber={house.blockNumber}
+    //     apartmentprice={house.apartmentprice} />
+    // ));
     const housesListComponent = houses.map((house) => (
-        <HouseCard  appartmentLocation={house.appartmentLocation}
-        img={house.img}
-        urlimg={url}
-        appartmentarea={house.appartmentarea}
-        countRoom={house.countRoom}
-        FloorHight={house.FloorHight}
-        blockNumber={house.blockNumber}
-        apartmentprice={house.apartmentprice} />
+        <div key={house.id} className="col-md-4 mb-4">
+            <HouseCard 
+                appartmentLocation={house.appartmentLocation}
+                img={house.img}
+                urlimg="./backend/public/image/apartment/"
+                appartmentarea={house.appartmentarea}
+                countRoom={house.countRoom}
+                FloorHight={house.FloorHight}
+                blockNumber={house.blockNumber}
+                apartmentprice={house.apartmentprice} 
+            />
+        </div>
     ));
     return (
         <>
@@ -64,9 +79,9 @@ const url="./backend/public/image/apartment/"
                         <div className="col">
                             <button className='button-filter' onClick={getAllHouses}> All</button>
                         </div>
-                        <div className="col">
+                        {/* <div className="col">
                             <button className='button-filter' onClick={getLocation}>Location</button>
-                        </div>
+                        </div> */}
                         <div className="col">
                             <button className='button-filter' onClick={getArea}> Area</button>
                         </div>
@@ -81,7 +96,13 @@ const url="./backend/public/image/apartment/"
                         </div>
                     </div>
                 </div>
-                {housesListComponent}
+                {/* {housesListComponent} */}
+                <div className="container">
+                <div className="container container-filters mb-5">
+                    {/* Filter buttons remain unchanged */}
+                </div>
+                <div className="row">{housesListComponent}</div>
+            </div>
             </div>
                 </>
     )
