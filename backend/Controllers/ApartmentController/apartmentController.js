@@ -35,14 +35,14 @@ const createApartment = async (req, res) => {
       apartmentprice: req.body.apartmentprice,
       apartmentdescription: req.body.apartmentdescription,
       appartmentLocation: req.body.appartmentLocation,
-      img:imgArray,
+      img: imgArray,
       appartmentarea: req.body.appartmentarea,
-      countRoom:req.body.countRoom,
-      FloorHight:req.body.FloorHight,
-      blockNumber:req.body.blockNumber,
+      countRoom: req.body.countRoom,
+      FloorHight: req.body.FloorHight,
+      blockNumber: req.body.blockNumber,
       ownerid: req.body.ownerid,
     });
-  
+
     console.log(newApartment);
     await newApartment.save();
 

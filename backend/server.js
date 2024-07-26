@@ -41,6 +41,9 @@ app.use("/owner", getAllOwnerRoute)
  app.use("/apartment",apartmentrouter)
  app.use("/filter",filterapartmentroute)
 
+
+ app.use(express.static('public'))
+ 
 connectDB().then(() => {
   //? Starting the server after successful database connection
   app.listen(process.env.PORT, () => {
