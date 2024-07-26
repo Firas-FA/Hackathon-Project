@@ -21,7 +21,8 @@ const getAllUserRoute = require('./Routers/UserRoutes/GetAllUsers')
 
 const createOwnerRoute = require("./Routers/OwnerRouters/CreateOwnerRoute")
 const getAllOwnerRoute = require("./Routers/OwnerRouters/GetAllOwnersRoute")
-
+const apartmentrouters=require("./Routers/ApartmentRouters/appartment")
+const filterRoute=require("./Routers/ApartmentRouters/filterRouters")
 app.use(express.json());
 app.use(cors());
 
@@ -36,6 +37,11 @@ app.use("/user", getAllUserRoute)
 
 app.use("/owner", createOwnerRoute)
 app.use("/owner", getAllOwnerRoute)
+
+
+app.use("/apartment", apartmentrouters);
+app.use("/filter", filterRoute);
+
 
 
 connectDB().then(() => {
