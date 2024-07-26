@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../houses/HousesStyle.css'
 import HouseCard from "../cardhouse/HouseCard"
+ 
 
+function Houses() {
+const x = "locallhost://3000+img"
 
-function Houses({}) {
     const [houses, setHouses] = useState([])
 
     function getAllHouses() {
