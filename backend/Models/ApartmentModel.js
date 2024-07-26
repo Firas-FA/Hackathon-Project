@@ -1,6 +1,6 @@
-const { Schema, mongoose } = require("mongoose");
+const mongoose= require("mongoose");
 
-const apartmentSchema = new Schema(
+const apartmentSchema = mongoose.Schema(
   {
     apartmentprice: {
       type: Number,
