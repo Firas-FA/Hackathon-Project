@@ -7,7 +7,7 @@ function HouseCard ({appartmentLocation,img,appartmentarea,countRoom,FloorHight,
   return (
     <><div className="container">
             <div className="card custom-card">
-                <img src={url+img} alt="" className="card-img-top custom-card-image"/>
+                <img src={`http://localhost:5000/image/apartment/`+img} alt="" className="card-img-top custom-card-image"/>
                 <div className="card-body">
                     <h5 className="card-title custom-card-title">Location: {appartmentLocation}</h5>
                     <p className="card-text custom-card-detail">Block Number: {blockNumber}</p>

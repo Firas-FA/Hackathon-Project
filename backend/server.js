@@ -42,7 +42,7 @@ app.use("/owner", getAllOwnerRoute)
  app.use("/filter",filterapartmentroute)
 
 
- app.use(express.static('../backend/public/image/apartment'))
+ app.use(express.static('public'))
 
 connectDB().then(() => {
   //? Starting the server after successful database connection
