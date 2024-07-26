@@ -14,6 +14,7 @@ const app = express();
 
 const User = require("./Models/UserModel");
 const Owner = require("./Models/OwnerModel")
+const Apartment = require("./Models/ApartmentModel")
 
 const userRegisterRoute = require("./Routers/UserRoutes/RegesterRoute");
 const userLoginRoute = require("./Routers/UserRoutes/LoginRoute");
@@ -21,8 +22,7 @@ const getAllUserRoute = require('./Routers/UserRoutes/GetAllUsers')
 
 const createOwnerRoute = require("./Routers/OwnerRouters/CreateOwnerRoute")
 const getAllOwnerRoute = require("./Routers/OwnerRouters/GetAllOwnersRoute")
-const apartmentrouters=require("./Routers/ApartmentRouters/appartment")
-const filterRoute=require("./Routers/ApartmentRouters/filterRouters")
+
 app.use(express.json());
 app.use(cors());
 
@@ -39,8 +39,40 @@ app.use("/owner", createOwnerRoute)
 app.use("/owner", getAllOwnerRoute)
 
 
-app.use("/apartment", apartmentrouters);
-app.use("/filter", filterRoute);
+
+
+
+
+// Route to create a new RentContract
+app.post("/rentcontracts", async (req, res) => {
+  try {
+    const { id, id_apartment, user_name, Rental_period, total_rental } = req.body;
+
+    // Ensure the referenced apartment exists
+    const apartment = await Apartment.findById(id_apartment);
+    if (!apartment) {
+      return res.status(400).json({ error: "Apartment not found" });
+    }
+
+    // Create the new RentContract
+    const newRentContract = new RentContract({
+      id,
+      id_apartment,
+      user_name,
+      Rental_period,
+      total_rental,
+    });
+
+    // Save the RentContract
+    const savedRentContract = await newRentContract.save();
+
+    // Return the saved RentContract
+    res.status(201).json(savedRentContract);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 
 
 
