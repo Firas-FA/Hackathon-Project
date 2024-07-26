@@ -13,6 +13,7 @@ const {
 //* Importing Constants Messages *\\
 
 //? Create Functions To Validation 
+
 async function validateFields(req) {
   const { userName, userEmail, userPassword, userPhone } = req.body;
   if (!userName || !userEmail || !userPassword || !userPhone) {
