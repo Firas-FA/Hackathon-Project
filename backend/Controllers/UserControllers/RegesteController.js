@@ -3,13 +3,13 @@ const validator = require("validator");
 
 const User = require("../../Models/UserModel");
 
-//* Importing Constants Messages
-const {
-  REQUIRED_FIELD_ERROR,
-  INVALID_EMAIL,
-  DUPLICATE_EMAIL,
-  INVALID_PHONE_NUMBER
-} = require("../../Constants/User/RegisterMessages");
+// //* Importing Constants Messages
+// const {
+//   REQUIRED_FIELD_ERROR,
+//   INVALID_EMAIL,
+//   DUPLICATE_EMAIL,
+//   INVALID_PHONE_NUMBER
+// } = require("../../Constants/User/RegisterMessages");
 //* Importing Constants Messages *\\
 
 //? Create Functions To Validation 

@@ -7,6 +7,8 @@ import Signup from './Pages/SignuUp/Signup';
 import Details from './Pages/Details/Details';
 import AdminPage from './Pages/Admin Page/AdminPage';
 
+
+
 function App() {
   return (
     <>

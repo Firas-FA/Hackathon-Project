@@ -18,7 +18,6 @@ const wellcome = (req, res) => {
 // }
 
 const createApartment = async (req, res) => {
-  console.log("controller");
   try {
     const {
       apartmentprice,
@@ -32,7 +31,6 @@ const createApartment = async (req, res) => {
     } = req.body;
     // console.log(req.body)
     const imgArray = req.files.map(file => file.originalname)
-    // console.log(img);
     const newApartment = new Apartment({
       apartmentprice: req.body.apartmentprice,
       apartmentdescription: req.body.apartmentdescription,
@@ -53,8 +51,6 @@ const createApartment = async (req, res) => {
     res.status(500).json({ error: "Failed to create apartments" });
   }
 };
-// "668080a4574f82a6c3363d3e"
-
 
 const getAllApartments = async (req, res) => {
   try {
