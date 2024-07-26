@@ -9,7 +9,7 @@ function HouseCard ({appartmentLocation,img,appartmentarea,countRoom,FloorHight,
     <div className="row">
         <div className="col-lg-4 mb-4">
             <div className="card custom-card">
-                <img src={img} alt="" className="card-img-top custom-card-image"/>
+                <img src={localhostimg} alt="" className="card-img-top custom-card-image"/>
                 <div className="card-body">
                     <h5 className="card-title custom-card-title">Location: {appartmentLocation}</h5>
                     <p className="card-text custom-card-detail">Block Number: {blockNumber}</p>
