@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    overflow-x: hidden;
+}
+
+@layer base {
+    :root {
+        --primary-text-color: #333333;
+        --secondary-text-color: #666666;
+        --primary-bg: #FFFFF0;
+        --secondary-bg: #F5F5DC;
+        --border-color: #D4AF37;
+        --headers-color: #B8860B;
+        --btn-bg: #FFD700;
+        --highlight-color: #DAA520;
+        --alerts-color: #B87333;
+        --montserrate-font: "Montserrat", sans-serif;
+        --open-sans-font: "Open Sans", sans-serif;
+        --lora-font: "Lora", serif;
+      }
+  }
