@@ -7,6 +7,11 @@ const contractSchema = new Schema(
             ref: "Apartment",
             required: [true, "Apartment ID is required."]
         },
+        id_user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: [true, "User ID is required."]
+        },
         user_name: {
             type: String,
             required: [true, "User name is required."],
