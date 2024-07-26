@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const userroute=require('./Routers/UserRoutes/authRoute')
 
 
 const connectDB = require("./DB/Connection");
@@ -29,9 +30,10 @@ app.use(cors());
 
 
 
-app.use("/user", userRegisterRoute);
-app.use("/user", userLoginRoute);
-app.use("/user", getAllUserRoute)
+// app.use("/user", userRegisterRoute);
+// app.use("/user", userLoginRoute);
+// app.use("/user", getAllUserRoute)
+app.use("/user",userroute)
 
 app.use("/owner", createOwnerRoute)
 app.use("/owner", getAllOwnerRoute)
