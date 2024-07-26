@@ -49,6 +49,9 @@ app.use('/contract', createContractRoute)
 app.use('/contract', getAllContractsRoute)
 
 
+
+ app.use(express.static('public'))
+
 connectDB().then(() => {
   //? Starting the server after successful database connection
   app.listen(process.env.PORT, () => {
