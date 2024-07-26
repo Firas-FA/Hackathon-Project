@@ -10,48 +10,88 @@ const axios = require('axios');
 const connectDB = require("./DB/Connection");
 
 const app = express();
-
-const port = process.env.PORT || 5000;
+const apartmentrouter=require("./Routers/ApartmentRouters/appartment")
+const filterapartmentroute=require('./Routers/ApartmentRouters/filterRouters')
 
 const User = require("./Models/UserModel");
+const Owner = require("./Models/OwnerModel")
+const Apartment = require("./Models/ApartmentModel")
 
 const userRegisterRoute = require("./Routers/UserRoutes/RegesterRoute");
 const userLoginRoute = require("./Routers/UserRoutes/LoginRoute");
-const userLogoutRoute = require("./Routers/UserRoutes/LogoutRoute");
-const eventRouter = require('./Routers/EventRoutes/eventRouter');
+const getAllUserRoute = require('./Routers/UserRoutes/GetAllUsers')
 
+const createOwnerRoute = require("./Routers/OwnerRouters/CreateOwnerRoute")
+const getAllOwnerRoute = require("./Routers/OwnerRouters/GetAllOwnersRoute")
 
 app.use(express.json());
 app.use(cors());
 
-app.use("", userRegisterRoute);
 
-app.use("", userLoginRoute);
 
-app.use("", userLogoutRoute);
+app.use("/user", userRegisterRoute);
+app.use("/user", userLoginRoute);
+app.use("/user", getAllUserRoute)
 
-app.use('/events', eventRouter);
+app.use("/owner", createOwnerRoute)
+app.use("/owner", getAllOwnerRoute)
 
-// app.get('/api/templates', async (req, res) => {
+ app.use("/apartment",apartmentrouter)
+ app.use("/filter",filterapartmentroute)
+
+connectDB().then(() => {
+  //? Starting the server after successful database connection
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`);
+  });
+}
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Route to create a new RentContract
+// app.post("/rentcontracts", async (req, res) => {
 //   try {
-//     const CLIENT_ID = 'OC-AZB45DyjSCFE'; // Replace with your Canva client ID
-//     const url = 'https://api.canva.com/v1/templates';
+//     const { id, id_apartment, user_name, Rental_period, total_rental } = req.body;
 
-//     const response = await axios.get(url, {
-//       headers: {
-//         Authorization: `Bearer ${CLIENT_ID}`,
-//         // 'Content-Type': 'application/json', // Might not be necessary for GET requests
-//       },
+//     // Ensure the referenced apartment exists
+//     const apartment = await Apartment.findById(id_apartment);
+//     if (!apartment) {
+//       return res.status(400).json({ error: "Apartment not found" });
+//     }
+
+//     // Create the new RentContract
+//     const newRentContract = new RentContract({
+//       id,
+//       id_apartment,
+//       user_name,
+//       Rental_period,
+//       total_rental,
 //     });
 
-//     res.json(response.data);
+//     // Save the RentContract
+//     const savedRentContract = await newRentContract.save();
+
+//     // Return the saved RentContract
+//     res.status(201).json(savedRentContract);
 //   } catch (error) {
-//     console.error('Error fetching templates from Canva:', error.message);
-//     res.status(500).json({ error: 'Failed to fetch templates from Canva' });
+//     res.status(400).json({ error: error.message });
 //   }
 // });
 
-connectDB();
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});

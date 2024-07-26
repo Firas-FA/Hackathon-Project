@@ -1,7 +1,7 @@
 const validator = require("validator");
 
 
-const User = require("../../Models/UserModel");
+const Owner = require("../../Models/OwnerModel");
 
 //* Importing Constants Messages
 const {
@@ -14,31 +14,31 @@ const {
 
 //? Create Functions To Validation 
 async function validateFields(req) {
-  const { userName, userEmail, userPassword, userPhone } = req.body;
-  if (!userName || !userEmail || !userPassword || !userPhone) {
+  const { ownerName, ownerEmail, ownerPhone } = req.body;
+  if (!ownerName || !ownerEmail || !ownerPhone) {
     throw new Error(REQUIRED_FIELD_ERROR);
   }
 }
 async function validatePhoneNumber(req) {
-  const { userPhone } = req.body;
+  const { ownerPhone } = req.body;
   const syrianPhoneNumberRegex = /^09\d{8}$/;
 
-  if (!syrianPhoneNumberRegex.test(userPhone)) {
+  if (!syrianPhoneNumberRegex.test(ownerPhone)) {
     throw new Error(INVALID_PHONE_NUMBER);
   }
 }
 
 async function validateEmail(req) {
-  const { userEmail } = req.body;
-  if (!validator.isEmail(userEmail)) {
+  const { ownerEmail } = req.body;
+  if (!validator.isEmail(ownerEmail)) {
     throw new Error(INVALID_EMAIL);
   }
 }
 
 async function checkDuplicateEmail(req) {
-  const { userEmail } = req.body;
-  const existingUser = await User.findOne({ userEmail });
-  if (existingUser) {
+  const { ownerEmail } = req.body;
+  const existingOwner = await Owner.findOne({ ownerEmail });
+  if (existingOwner) {
     throw new Error(DUPLICATE_EMAIL);
   }
 }
