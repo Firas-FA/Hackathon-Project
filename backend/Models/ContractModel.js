@@ -2,11 +2,6 @@ const { Schema, mongoose } = require("mongoose");
 
 const contractSchema = new Schema(
     {
-        id: {
-            type: Number,
-            required: [true, "ID is required."],
-            unique: true
-        },
         id_apartment: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Apartment",
