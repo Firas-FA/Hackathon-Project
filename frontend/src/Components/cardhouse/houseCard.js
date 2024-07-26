@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import "../cardhouse/houseCardStyle.css"
 
 function HouseCard ({appartmentLocation,img,appartmentarea,countRoom,FloorHight,blockNumber,apartmentprice}) {
- 
+ const url="http://localhost:5000"
   return (
     <><div className="container">
             <div className="card custom-card">
-                <img src={localhostimg} alt="" className="card-img-top custom-card-image"/>
+                <img src={url+img} alt="" className="card-img-top custom-card-image"/>
                 <div className="card-body">
                     <h5 className="card-title custom-card-title">Location: {appartmentLocation}</h5>
                     <p className="card-text custom-card-detail">Block Number: {blockNumber}</p>
