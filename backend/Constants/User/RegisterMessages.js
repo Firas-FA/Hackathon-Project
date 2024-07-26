@@ -1,4 +1,4 @@
-const SUCCESSFUL_REGISTRATION_MESSAGE = "🎉 Owner created successfully!";
+const SUCCESSFUL_REGISTRATION_MESSAGE = "🎉 Account created successfully!";
 const REQUIRED_FIELD_ERROR = "⚠️ Error: All fields required.";
 const INVALID_EMAIL = "✉️ Error: Invalid email format.";
 const DUPLICATE_EMAIL = "🔒 Error: Invalid email address. Please try again.";

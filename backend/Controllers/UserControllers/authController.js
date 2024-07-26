@@ -1,10 +1,15 @@
 const jwt = require("jsonwebtoken");
+const validator = require("validator");
 const User = require("../../Models/UserModel");
 const {
-    MISSING_FIELDS_ERROR,
-    LOGIN_ERROR,
+  SUCCESSFUL_REGISTRATION_MESSAGE,
+  REQUIRED_FIELD_ERROR,
+  INVALID_EMAIL,
+  DUPLICATE_EMAIL,
+  INVALID_PHONE_NUMBER
   } = require("../../Constants/User/RegisterMessages");
-
+//* Importing Constants Messages
+ 
   const test=(req,res)=>{
     console.log("test done in controller");
   }
@@ -39,7 +44,6 @@ const login= async (req, res) => {
 
   
   const register= async (req, res) => {
-    console.log("test is done");
     try {
       await validateFields(req);
       await validatePhoneNumber(req);
