@@ -10,7 +10,8 @@ const axios = require('axios');
 const connectDB = require("./DB/Connection");
 
 const app = express();
-
+const apartmentrouter=require("./Routers/ApartmentRouters/appartment")
+const filterapartmentroute=require('./Routers/ApartmentRouters/filterRouters')
 
 const User = require("./Models/UserModel");
 const Owner = require("./Models/OwnerModel")
@@ -35,7 +36,8 @@ app.use("/user", getAllUserRoute)
 app.use("/owner", createOwnerRoute)
 app.use("/owner", getAllOwnerRoute)
 
- 
+ app.use("/apartment",apartmentrouter)
+ app.use("/filter",filterapartmentroute)
 
 connectDB().then(() => {
   //? Starting the server after successful database connection
