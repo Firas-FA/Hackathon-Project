@@ -1,4 +1,6 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@splidejs/react-splide/css';
 import { Routes, Route } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
 import LandingPage from './Pages/Landing Page/LandingPage';

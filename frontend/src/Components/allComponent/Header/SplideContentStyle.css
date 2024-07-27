@@ -1,0 +1,34 @@
+.splide__arrow {
+    background-color: #DAA520 !important;
+    width: 36px;
+    height: 36px;
+    border-radius: 0;
+    opacity: 1;
+    position: absolute;
+}
+.splide__arrow--next{
+    right: 46%;
+    top: 100%;
+}
+.splide__arrow--prev{
+    top: 100%;
+    left: 46%;
+}
+.slide-content{
+    position: relative;
+}
+.slide-content img{
+    position: absolute;
+    z-index: -1;
+}
+.slide-content .overlay{
+    /* position: absolute; */
+    width: 100%;
+    height: 100vh;
+    top: -200px;
+    background-color: rgba(0, 0, 0, 0.432);
+    /* z-index: 100; */
+}
+.slide-content .overlay div{
+    margin: auto IM !important;
+}
