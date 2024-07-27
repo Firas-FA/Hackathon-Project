@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import '../houses/HousesStyle.css'
 import HouseCard from "../cardhouse/HouseCard"
- 
+
 
 function Houses() {
-const x = "locallhost://3000+img"
 
     const [houses, setHouses] = useState([])
 
     function getAllHouses() {
         fetch("http://localhost:5000/apartment/GetAllApartment")
             .then((res) => res.json())
-            .then((data) => {setHouses(data)
+            .then((data) => {
+                setHouses(data)
             })
     }
     function getLocation() {
@@ -47,21 +47,9 @@ const x = "locallhost://3000+img"
         getNumber();
         getHeight();
     }, [])
-const url="./backend/public/image/apartment/"
-    // const housesListComponent = houses.map((house) => (
-        
-    //     <HouseCard  appartmentLocation={house.appartmentLocation}
-    //     img={house.img}
-    //     urlimg={url}
-    //     appartmentarea={house.appartmentarea}
-    //     countRoom={house.countRoom}
-    //     FloorHight={house.FloorHight}
-    //     blockNumber={house.blockNumber}
-    //     apartmentprice={house.apartmentprice} />
-    // ));
     const housesListComponent = houses.map((house) => (
         <div key={house.id} className="col-md-4 mb-4">
-            <HouseCard 
+            <HouseCard
                 appartmentLocation={house.appartmentLocation}
                 img={house.img}
                 urlimg="./backend/public/image/apartment/"
@@ -69,7 +57,7 @@ const url="./backend/public/image/apartment/"
                 countRoom={house.countRoom}
                 FloorHight={house.FloorHight}
                 blockNumber={house.blockNumber}
-                apartmentprice={house.apartmentprice} 
+                apartmentprice={house.apartmentprice}
             />
         </div>
     ));
@@ -100,13 +88,13 @@ const url="./backend/public/image/apartment/"
                 </div>
                 {/* {housesListComponent} */}
                 <div className="container">
-                <div className="container container-filters mb-5">
-                    {/* Filter buttons remain unchanged */}
+                    <div className="container container-filters mb-5">
+                        {/* Filter buttons remain unchanged */}
+                    </div>
+                    <div className="row">{housesListComponent}</div>
                 </div>
-                <div className="row">{housesListComponent}</div>
             </div>
-            </div>
-                </>
+        </>
     )
 }
 
