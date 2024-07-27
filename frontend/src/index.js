@@ -9,7 +9,9 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+    <MantineProvider>
       <App />
+    </MantineProvider>
     </BrowserRouter>
   </React.StrictMode>
 )
