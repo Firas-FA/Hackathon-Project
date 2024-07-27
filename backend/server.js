@@ -5,14 +5,14 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const userroute=require('./Routers/UserRoutes/authRoute')
+const userroute = require('./Routers/UserRoutes/authRoute')
 
 
 const connectDB = require("./DB/Connection");
 
 const app = express();
-const apartmentrouter=require("./Routers/ApartmentRouters/appartment")
-const filterapartmentroute=require('./Routers/ApartmentRouters/filterRouters')
+const apartmentrouter = require("./Routers/ApartmentRouters/appartment")
+const filterapartmentroute = require('./Routers/ApartmentRouters/filterRouters')
 
 const User = require("./Models/UserModel");
 const Owner = require("./Models/OwnerModel")
@@ -25,6 +25,9 @@ const getAllUserRoute = require('./Routers/UserRoutes/GetAllUsers')
 const createOwnerRoute = require("./Routers/OwnerRouters/CreateOwnerRoute")
 const getAllOwnerRoute = require("./Routers/OwnerRouters/GetAllOwnersRoute")
 
+const createContractRoute = require('./Routers/ContractRoutes/CreateContractRoute')
+const getAllContractsRoute = require('./Routers/ContractRoutes/getAllContracts')
+
 app.use(express.json());
 app.use(cors());
 
@@ -33,13 +36,21 @@ app.use(cors());
 // app.use("/user", userRegisterRoute);
 // app.use("/user", userLoginRoute);
 // app.use("/user", getAllUserRoute)
-app.use("/user",userroute)
+app.use("/user", userroute)
 
 app.use("/owner", createOwnerRoute)
 app.use("/owner", getAllOwnerRoute)
 
- app.use("/apartment",apartmentrouter)
- app.use("/filter",filterapartmentroute)
+app.use("/apartment", apartmentrouter)
+app.use("/filter", filterapartmentroute)
+
+
+app.use('/contract', createContractRoute)
+app.use('/contract', getAllContractsRoute)
+
+
+
+ app.use(express.static('public'))
 
 connectDB().then(() => {
   //? Starting the server after successful database connection
@@ -67,33 +78,5 @@ connectDB().then(() => {
 
 
 
-// // Route to create a new RentContract
-// app.post("/rentcontracts", async (req, res) => {
-//   try {
-//     const { id, id_apartment, user_name, Rental_period, total_rental } = req.body;
 
-//     // Ensure the referenced apartment exists
-//     const apartment = await Apartment.findById(id_apartment);
-//     if (!apartment) {
-//       return res.status(400).json({ error: "Apartment not found" });
-//     }
-
-//     // Create the new RentContract
-//     const newRentContract = new RentContract({
-//       id,
-//       id_apartment,
-//       user_name,
-//       Rental_period,
-//       total_rental,
-//     });
-
-//     // Save the RentContract
-//     const savedRentContract = await newRentContract.save();
-
-//     // Return the saved RentContract
-//     res.status(201).json(savedRentContract);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
 

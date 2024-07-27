@@ -1,43 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import '../houses/HousesStyle.css'
+import HouseCard from "../cardhouse/HouseCard"
+ 
 
 function Houses() {
-    const [AllHouses, setAllHouses] = useState({})
-    const [Location, setLocation] = useState({})
-    const [Area, setArea] = useState({})
-    const [Price, setPrice] = useState({})
-    const [Number, setNumber] = useState({})
-    const [Height, setHeight] = useState({})
+const x = "locallhost://3000+img"
+
+    const [houses, setHouses] = useState([])
 
     function getAllHouses() {
-        fetch()
+        fetch("http://localhost:5000/apartment/GetAllApartment")
             .then((res) => res.json())
-            .then((data) => setAllHouses(data))
+            .then((data) => {setHouses(data)
+            })
     }
     function getLocation() {
-        fetch()
+        fetch("http://localhost:5000/filter/location")
             .then((res) => res.json())
-            .then((data) => setLocation(data))
+            .then((data) => setHouses(data))
     }
     function getArea() {
-        fetch()
+        fetch("http://localhost:5000/filter/filterarea")
             .then((res) => res.json())
-            .then((data) => setArea(data))
+            .then((data) => setHouses(data))
     }
     function getPrice() {
-        fetch()
+        fetch("http://localhost:5000/filter/sortasprice")
             .then((res) => res.json())
-            .then((data) => setPrice(data))
+            .then((data) => setHouses(data))
     }
     function getNumber() {
-        fetch()
+        fetch("http://localhost:5000/filter/sortascountroom")
             .then((res) => res.json())
-            .then((data) => setNumber(data))
+            .then((data) => setHouses(data))
     }
     function getHeight() {
-        fetch()
+        fetch("http://localhost:5000/filter/sortasfloorhight")
             .then((res) => res.json())
-            .then((data) => setHeight(data))
+            .then((data) => setHouses(data))
     }
     useEffect(() => {
         getAllHouses();
@@ -47,17 +47,43 @@ function Houses() {
         getNumber();
         getHeight();
     }, [])
+const url="./backend/public/image/apartment/"
+    // const housesListComponent = houses.map((house) => (
+        
+    //     <HouseCard  appartmentLocation={house.appartmentLocation}
+    //     img={house.img}
+    //     urlimg={url}
+    //     appartmentarea={house.appartmentarea}
+    //     countRoom={house.countRoom}
+    //     FloorHight={house.FloorHight}
+    //     blockNumber={house.blockNumber}
+    //     apartmentprice={house.apartmentprice} />
+    // ));
+    const housesListComponent = houses.map((house) => (
+        <div key={house.id} className="col-md-4 mb-4">
+            <HouseCard 
+                appartmentLocation={house.appartmentLocation}
+                img={house.img}
+                urlimg="./backend/public/image/apartment/"
+                appartmentarea={house.appartmentarea}
+                countRoom={house.countRoom}
+                FloorHight={house.FloorHight}
+                blockNumber={house.blockNumber}
+                apartmentprice={house.apartmentprice} 
+            />
+        </div>
+    ));
     return (
         <>
             <div className="container">
-                <div className="container container-filters">
+                <div className="container container-filters mb-5">
                     <div className="row">
                         <div className="col">
                             <button className='button-filter' onClick={getAllHouses}> All</button>
                         </div>
-                        <div className="col">
+                        {/* <div className="col">
                             <button className='button-filter' onClick={getLocation}>Location</button>
-                        </div>
+                        </div> */}
                         <div className="col">
                             <button className='button-filter' onClick={getArea}> Area</button>
                         </div>
@@ -65,68 +91,22 @@ function Houses() {
                             <button className='button-filter' onClick={getPrice}>Price</button>
                         </div>
                         <div className="col">
-                            <button className='button-filter' onClick={getNumber}> numberBed</button>
+                            <button className='button-filter' onClick={getNumber}> countRoom</button>
                         </div>
                         <div className="col">
-                            <button className='button-filter' onClick={getHeight}> height</button>
+                            <button className='button-filter' onClick={getHeight}> FloorHight</button>
                         </div>
                     </div>
                 </div>
-
+                {/* {housesListComponent} */}
+                <div className="container">
+                <div className="container container-filters mb-5">
+                    {/* Filter buttons remain unchanged */}
+                </div>
+                <div className="row">{housesListComponent}</div>
             </div>
-            {/* <div className="row">
-                {AllHouses.map((house) => {
-                    return (
-                        <div className='col-3' key={house.id}>
-                            <houseCard house={house} />
-                        </div>
-                    )
-                }
-                )}
-                {Location.map((location) => {
-                    return (
-                        <div className='col-3' key={location.id}>
-                            <houseCard location={location} />
-                        </div>
-                    )
-                }
-                )}
-                {Area.map((area) => {
-                    return (
-                        <div className='col-3' key={area.id}>
-                            <houseCard area={area} />
-                        </div>
-                    )
-                }
-                )}
-                {Price.map((price) => {
-                    return (
-                        <div className='col-3' key={price.id}>
-                            <houseCard price={price} />
-                        </div>
-                    )
-                }
-                )}
-                {Number.map((number) => {
-                    return (
-                        <div className='col-3' key={number.id}>
-                            <houseCard number={number} />
-                        </div>
-                    )
-                }
-                )}
-                {Height.map((height) => {
-                    return (
-                        <div className='col-3' key={height.id}>
-                            <houseCard height={height} />
-                        </div>
-                    )
-                }
-                )}
-
-            </div> */}
-
-        </>
+            </div>
+                </>
     )
 }
 

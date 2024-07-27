@@ -7,18 +7,20 @@ import LandingPage from './Pages/Landing Page/LandingPage';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/SignuUp/Signup';
 import Details from './Pages/Details/Details';
-import AdminPage from './Pages/Admin Page/AdminPage';
+import Sidebar from './Pages/Admin Page/AdminPage.jsx';
+
+
 
 function App() {
   return (
     <>
-    <Routes>
+      <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/details" element={<Details/>}/>
-        <Route path="/Admin" element={<AdminPage />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/signup" element={<Signup  />} />
+        <Route path="/details" element={<Details />} />
+        <Route path="/Admin" element={<Sidebar />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );

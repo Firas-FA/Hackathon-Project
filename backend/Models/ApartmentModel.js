@@ -21,7 +21,7 @@ const apartmentSchema = mongoose.Schema(
     },
     img: {
       type: Array,
-      default: [],
+      default: [] ,
     },
     appartmentarea: {
       type: String,
