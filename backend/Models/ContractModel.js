@@ -19,7 +19,7 @@ const contractSchema = new Schema(
             maxlength: [50, "User name cannot exceed 50 characters."]
         },
         Rental_period: {
-            type: String,
+            type: Date,
             required: [true, "Rental period is required."],
             minlength: [5, "Rental period must be at least 5 characters long."],
             maxlength: [100, "Rental period cannot exceed 100 characters."]

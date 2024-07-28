@@ -45,7 +45,7 @@ router.post("/rentcontracts", async (req, res) => {
         //? Save the RentContract
         const contract = await newContract.save();
 
-        res.status(201).json(contract);
+        res.status(201).json({ message: "Created successfully🔥" });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

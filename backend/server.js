@@ -50,7 +50,7 @@ app.use('/contract', getAllContractsRoute)
 
 
 
- app.use(express.static('public'))
+app.use(express.static('public'))
 
 connectDB().then(() => {
   //? Starting the server after successful database connection

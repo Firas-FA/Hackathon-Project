@@ -64,6 +64,7 @@ function Houses() {
     return (
         <>
             <div className="container">
+                <h2 className='containerTitle'>Your House</h2>
                 <div className="container container-filters mb-5">
                     <div className="row">
                         <div className="col">
@@ -72,17 +73,17 @@ function Houses() {
                         {/* <div className="col">
                             <button className='button-filter' onClick={getLocation}>Location</button>
                         </div> */}
-                        <div className="col">
+                        {/* <div className="col">
                             <button className='button-filter' onClick={getArea}> Area</button>
-                        </div>
+                        </div> */}
                         <div className="col">
                             <button className='button-filter' onClick={getPrice}>Price</button>
                         </div>
                         <div className="col">
-                            <button className='button-filter' onClick={getNumber}> countRoom</button>
+                            <button className='button-filter' onClick={getNumber}>Count Room</button>
                         </div>
                         <div className="col">
-                            <button className='button-filter' onClick={getHeight}> FloorHight</button>
+                            <button className='button-filter' onClick={getHeight}>Floor Hight</button>
                         </div>
                     </div>
                 </div>
