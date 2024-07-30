@@ -20,37 +20,36 @@ const wellcome = (req, res) => {
 const createApartment = async (req, res) => {
   try {
     const {
-      apartmentprice,
-      apartmentdescription,
-      appartmentLocation,
+      apartmentPrice,
+      apartmentDescription,
+      apartmentLocation,
+      apartmentArea,
       blockNumber,
-      appartmentarea,
       countRoom,
-      ownerid,
-      FloorHight
+      ownerId,
+      floorHight
     } = req.body;
-    // console.log(req.body)
-    const imgArray = req.files.map(file => file.originalname)
+
+    const imgArray = req.files.map(file => file.originalname);
     const newApartment = new Apartment({
-      apartmentprice: req.body.apartmentprice,
-      apartmentdescription: req.body.apartmentdescription,
-      appartmentLocation: req.body.appartmentLocation,
-      img: imgArray,
-      appartmentarea: req.body.appartmentarea,
-      countRoom: req.body.countRoom,
-      FloorHight: req.body.FloorHight,
-      blockNumber: req.body.blockNumber,
-      ownerid: req.body.ownerid,
+      apartmentPrice,
+      apartmentDescription,
+      apartmentLocation,
+      pictures: imgArray,
+      apartmentArea,
+      countRoom,
+      floorHight,
+      blockNumber,
+      ownerId
     });
 
-    console.log(newApartment);
     await newApartment.save();
-
-    res.status(201).json(newApartment);
+    res.status(201).json({ message: "🎉 Apartment created successfully!" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to create apartments" });
+    res.status(500).json({ message: error.message });
   }
 };
+
 
 const getAllApartments = async (req, res) => {
   try {

@@ -1,29 +1,29 @@
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 
 const apartmentSchema = mongoose.Schema(
   {
-    apartmentprice: {
+    apartmentPrice: {
       type: Number,
       required: [true, "Apartment price is required."],
       min: [1, "Apartment price must be at least 1."],
     },
-    apartmentdescription: {
+    apartmentDescription: {
       type: String,
       required: [true, "Apartment description is required."],
       minlength: [10, "Apartment description must be at least 10 characters long."],
       maxlength: [1000, "Apartment description cannot exceed 1000 characters."],
     },
-    appartmentLocation: {
+    apartmentLocation: {
       type: String,
       required: [true, "Apartment location is required."],
       minlength: [5, "Apartment location must be at least 5 characters long."],
       maxlength: [100, "Apartment location cannot exceed 100 characters."],
     },
-    img: {
+    pictures: {
       type: Array,
-      default: [] ,
+      default: [],
     },
-    appartmentarea: {
+    apartmentArea: {
       type: String,
       required: [true, "Apartment area is required."],
       minlength: [2, "Apartment area must be at least 2 characters long."],
@@ -34,27 +34,24 @@ const apartmentSchema = mongoose.Schema(
       required: [true, "Number of rooms is required."],
       min: [1, "Number of rooms must be at least 1."],
     },
-    FloorHight: {
+    floorHight: {
       type: Number,
       required: [true, "Floor height is required."],
       min: [1, "Floor height must be at least 1."],
     },
-    blockNumber:{
-        type:Number,
-        require:true
-
-    }
-    ,
-    ownerid: {
-      // type: mongoose.Schema.Types.ObjectId,
-      type:String,
-      // ref: "Owner",
+    blockNumber: {
+      type: Number,
+      required: [true, "Block number is required."],
+    },
+    ownerId: {
+      type: String,
     },
   },
   {
     timestamps: true,
   }
 );
+
 
 
 const Apartment = mongoose.model("Apartment", apartmentSchema);
